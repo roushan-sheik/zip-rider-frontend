@@ -1,22 +1,20 @@
-// import nexiosInstance from "@/config/nexios.config";
+import { ICar } from "@/interfaces/car.interface"
 import { Card, CardFooter, CardHeader } from "@nextui-org/card"
+import nexiosInstance from "@/config/nexios.config"
 import Image from "next/image"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
   //fetch with filter parameterd
-  const res = await fetch(`http://localhost:5000/api/v1/cars/${params.carId}`, {
-    next: {},
-    cache: "no-store",
-  })
-  const { data } = await res.json()
+  const { data: carData }: any = await nexiosInstance.get(
+    `/cars/${params.carId}`,
+    {
+      cache: "no-store",
+      next: {},
+    }
+  )
 
-  // const res: any = await nexiosInstance.get(`/cars/${params.carId}`, {
-  //   cache: "no-store",
-  //   next: {},
-  // })
-
-  // const data = res.data.data
+  const data: ICar = carData.data
 
   return (
     <div className="min-h-screen flex justify-center items-center p-4 bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-700">

@@ -1,21 +1,15 @@
+import nexiosInstance from "@/config/nexios.config"
 import { Card, CardFooter, CardHeader } from "@nextui-org/card"
 import Image from "next/image"
 import Link from "next/link"
+import { ICar } from "@/interfaces/car.interface"
 
 const Cars = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/cars", {
-    next: {},
+  const { data }: any = await nexiosInstance.get("/cars", {
     // cache: "no-store",
+    next: {},
   })
-  const { data } = await res.json()
-  console.log(data)
-
-  // res,json()
-
-  // const { data }: any = await nexiosInstance.get("/cars", {
-  //   cache: "no-store",
-  //   next: {},
-  // })
+  const cars: ICar[] = data.data
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
@@ -26,7 +20,7 @@ const Cars = async () => {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6 w-full max-w-7xl">
-        {data?.map((item: any) => (
+        {cars?.map((item: ICar) => (
           <Card
             key={item.name}
             className="relative w-full h-[350px] rounded-xl overflow-hidden shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl hover:z-20"
