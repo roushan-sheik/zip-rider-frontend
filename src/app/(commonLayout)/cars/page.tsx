@@ -1,14 +1,14 @@
-"use client"
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-// import nexiosInstance from "@/config/nexios.config"
-import { Card, CardFooter, CardHeader, Image, Link } from "@nextui-org/react"
+import { Card, CardFooter, CardHeader } from "@nextui-org/card"
+import Image from "next/image"
+import Link from "next/link"
 
 const Cars = async () => {
-  // const res = await fetch("http://localhost:5000/api/v1/cars", {
-  //   next: {},
-  //   cache: "no-store",
-  // });
+  const res = await fetch("http://localhost:5000/api/v1/cars", {
+    next: {},
+    // cache: "no-store",
+  })
+  const { data } = await res.json()
+  console.log(data)
 
   // res,json()
 
@@ -16,44 +16,6 @@ const Cars = async () => {
   //   cache: "no-store",
   //   next: {},
   // })
-  const data = [
-    {
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class-2023",
-      image:
-        "https://stimg2.cardekho.com/images/roadTestimages/userimages/722/1620195837912/GeneralRoadTest.jpg?tr=w-360?tr=w-320",
-      rating: 4.9,
-      fuelType: "d",
-      passengerCapacity: 5,
-      color: "Gray",
-      condition: "Nesw",
-    },
-    {
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class-2023",
-      image:
-        "https://stimg2.cardekho.com/images/roadTestimages/userimages/722/1620195837912/GeneralRoadTest.jpg?tr=w-360?tr=w-320",
-      rating: 4.9,
-      fuelType: "d",
-      passengerCapacity: 5,
-      color: "Gray",
-      condition: "Nesw",
-    },
-    {
-      name: "Mercedes-Benz E-Class",
-      brand: "Mercedes-Benz",
-      model: "E-Class-2023",
-      image:
-        "https://stimg2.cardekho.com/images/roadTestimages/userimages/722/1620195837912/GeneralRoadTest.jpg?tr=w-360?tr=w-320",
-      rating: 4.9,
-      fuelType: "d",
-      passengerCapacity: 5,
-      color: "Gray",
-      condition: "Nesw",
-    },
-  ]
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
@@ -81,7 +43,8 @@ const Cars = async () => {
 
             {/* Car Image */}
             <Image
-              removeWrapper
+              width={250}
+              height={200}
               alt={item.name}
               className="z-0 w-full h-full object-cover transition-transform duration-500"
               src={item.image}

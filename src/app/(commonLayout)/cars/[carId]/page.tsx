@@ -1,9 +1,15 @@
 // import nexiosInstance from "@/config/nexios.config";
-import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react"
+import { Card, CardFooter, CardHeader } from "@nextui-org/card"
+import Image from "next/image"
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
   //fetch with filter parameterd
+  const res = await fetch(`http://localhost:5000/api/v1/cars/${params.carId}`, {
+    next: {},
+    cache: "no-store",
+  })
+  const { data } = await res.json()
 
   // const res: any = await nexiosInstance.get(`/cars/${params.carId}`, {
   //   cache: "no-store",
@@ -21,7 +27,8 @@ const CarsDetailPage = async ({ params }: { params: { carId: string } }) => {
         {/* Car Image with Overlay */}
         <div className="relative">
           <Image
-            removeWrapper
+            width={500}
+            height={250}
             alt={data?.name}
             className="w-full h-[500px] object-cover transition-transform transform hover:scale-110"
             src={data?.image}
