@@ -5,6 +5,7 @@ import GoogleProvider from "next-auth/providers/google"
 import config from "./../../../../config/env.config"
 import nexiosInstance from "@/config/nexios.config"
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
 
 const handler = NextAuth({
   // Configure one or more authentication providers
@@ -22,12 +23,17 @@ const handler = NextAuth({
         return false
       }
       if (account?.provider === "google") {
-        const response = await nexiosInstance.post("/auth/login", {
+        // create user into db
+        const response: any = await nexiosInstance.post("/auth/login", {
           name: profile?.name,
           email: profile?.email,
           img: profile?.picture,
         })
-        console.log("Res data :::", response)
+        // set accessToken into browser cookie
+        if (response.data.data.accessToken && response.data.data.refreshToken) {
+          cookies().set("accessToken", response.data.data.accessToken)
+          cookies().set("refreshToken", response.data.data.refreshToken)
+        }
       }
       return true // Do different verification for other providers that don't have `email_verified`
     },
