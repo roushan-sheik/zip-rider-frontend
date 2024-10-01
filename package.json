@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.8",
     "framer-motion": "^11.8.0",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.446.0",
     "nexios-http": "^1.1.21",
     "next": "14.2.13",
