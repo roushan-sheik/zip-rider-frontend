@@ -1,3 +1,4 @@
+"use client"
 import { Avatar, Tooltip } from "@nextui-org/react"
 import { CollapseItems } from "./collapse-items"
 import { SidebarItem } from "./sidebar-item"
@@ -5,9 +6,10 @@ import { Sidebar } from "./sidebar.styles"
 
 import { Car, Cog, Home, User } from "lucide-react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+
 import { useSidebarContext } from "@/app/(dashboardLayout)/_layout/layout-context"
 import { SidebarMenu } from "./sidebar.menu"
+import { usePathname } from "next/navigation"
 
 export const AdminSidebarWrapper = () => {
   const pathname = usePathname()

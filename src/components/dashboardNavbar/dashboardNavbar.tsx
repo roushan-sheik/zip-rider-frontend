@@ -1,3 +1,4 @@
+"use client"
 import { Input, Navbar, NavbarContent } from "@nextui-org/react"
 import React from "react"
 import { ChevronLeft, Menu, SearchCheck } from "lucide-react"
