@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
     if (authRoutes.includes(pathname)) {
       return NextResponse.next()
     } else {
-      console.log("accessToken nai amar vai>>>>", accessToken)
+      //  redirect to the login page
       return NextResponse.redirect(
         new URL(
           pathname ? `/login?redirect=${pathname}` : "/login",

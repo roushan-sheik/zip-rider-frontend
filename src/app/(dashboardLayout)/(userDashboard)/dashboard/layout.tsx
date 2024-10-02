@@ -1,11 +1,11 @@
 import React, { ReactNode } from "react"
+import UserLayout from "./_layout/userLayout"
 
 const UserDashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
-      UserDashboardLayout
-      <div>{children}</div>
-    </>
+    <div>
+      <UserLayout>{children}</UserLayout>
+    </div>
   )
 }
 
