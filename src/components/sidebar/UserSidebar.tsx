@@ -1,12 +1,11 @@
 import { Car, Cog, DollarSign, History, Home } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
-import { Sidebar } from "./sidebar.styles"
 import { SidebarItem } from "./sidebar-item"
-import { SidebarMenu } from "./sidebar-menu"
-import { useSidebarContext } from "@/app/(dashboardLayout)/layout/layout-context"
+import { SidebarMenu } from "./sidebar.menu"
 import { CollapseItems } from "./collapse-items"
+import { useSidebarContext } from "@/app/(dashboardLayout)/_layout/layout-context"
+import { Sidebar } from "./sidebar.styles"
 
 export const SidebarWrapper = () => {
   const pathname = usePathname()
